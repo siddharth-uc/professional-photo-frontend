@@ -1,0 +1,33 @@
+.panel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.emoji-label {
+  font-size: 2.5rem; /* Made emoji bigger */
+  margin-top: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0 10px rgba(0,0,0,0.1); /* Added subtle shadow for better visibility */
+}
+
+.images-section {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 1rem;
+}
+
+.left-images-container, .right-image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 

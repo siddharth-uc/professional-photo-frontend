@@ -3,20 +3,27 @@ import React from 'react';
 import Lottie from 'lottie-react';
 // You'll need to import your loading animation JSON file
 
-function ImageDisplay({ topKImages, outputImage, isLoading }) {
+function ImageDisplay({ topKImages, outputImage, leftLoading, rightLoading }) {
   const defaultOptions = {
     loop: true,
     autoplay: true,
-    path: "/loading_lottie_2.json", // This path is relative to the public folder
+    path: "/loading_lottie_2.json",
   };
 
   return (
     <div className="images-section">
       {/* Left side: Grid of top K images */}
       <div className="left-images-container">
-        {topKImages.map((imgUrl, index) => (
-          <img key={index} src={"/test.jpeg"} alt={`Top image ${index + 1}`} />
-        ))}
+        {leftLoading ? (
+          <Lottie 
+            {...defaultOptions}
+            style={{ width: 200, height: 200 }}
+          />
+        ) : (
+          topKImages.map((imgUrl, index) => (
+            <img key={index} src={imgUrl} alt={`Top image ${index + 1}`} />
+          ))
+        )}
       </div>
 
       {/* Center: Arrow indicating transformation */}
@@ -26,13 +33,13 @@ function ImageDisplay({ topKImages, outputImage, isLoading }) {
 
       {/* Right side: Output image */}
       <div className="right-image-container">
-        {isLoading ? (
+        {rightLoading ? (
           <Lottie 
             {...defaultOptions}
-            style={{ width: 200, height: 200 }} // Adjust size as needed
+            style={{ width: 200, height: 200 }}
           />
         ) : (
-          outputImage && <img src={"/test.jpeg"} alt="Output" />
+          outputImage && <img src={outputImage} alt="Output" />
         )}
       </div>
     </div>

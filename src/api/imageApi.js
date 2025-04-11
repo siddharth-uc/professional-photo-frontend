@@ -1,25 +1,33 @@
 // src/api/imageApi.js
 
-// Simulated API call for fetching the top K images
+// Import axios
+import axios from 'axios';
+
+const BASE_URL = 'https://b2c3-165-85-55-93.ngrok-free.app/provider-training-service/professional';
+const TOP_K_ENDPOINT = `${BASE_URL}/getTopKImagesForProviderId`;
+const OUTPUT_ENDPOINT = `${BASE_URL}/generateProfessionalImageForProviderId`;
+
+// Get top K images from the API
 export async function getTopKImages(providerId) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve([
-          'https://via.placeholder.com/150?text=Image1',
-          'https://via.placeholder.com/150?text=Image2',
-          'https://via.placeholder.com/150?text=Image3',
-          'https://via.placeholder.com/150?text=Image4'
-        ]);
-      }, 800);
-    });
+  try {
+    const response = await axios.get(`${TOP_K_ENDPOINT}?providerId=${providerId}`);
+    console.log("response", response);
+    return response.data.topKImages || [];
+  } catch (error) {
+    console.error('Error fetching top K images:', error);
+    throw error;
   }
-  
-  // Simulated API call for fetching the output image
-  export async function getOutputImage(providerId) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve('https://via.placeholder.com/300?text=Output+Image');
-      }, 800);
-    });
+}
+
+// Get output image from a separate API endpoint
+export async function getOutputImage(providerId) {
+  try {
+    const response = await axios.get(`${OUTPUT_ENDPOINT}?providerId=${providerId}`);
+    console.log("response", response);
+    return response.data.outputImage || '';
+  } catch (error) {
+    console.error('Error fetching output image:', error);
+    throw error;
   }
+}
   

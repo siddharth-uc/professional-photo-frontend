@@ -10,27 +10,26 @@ function App() {
   const [topKImages, setTopKImages] = useState([]);
   const [outputImage, setOutputImage] = useState('');
   const [isLoading, setIsLoading] = useState(false); // Add this state
+  const [leftLoading, setLeftLoading] = useState(false);
+  const [rightLoading, setRightLoading] = useState(false);
 
   const handleGenerate = async () => {
-
-    if (!providerId.trim()) {
-      alert('Please enter a Provider ID');
-      return;
-    }
-
-    // Clear the previous images
-    setTopKImages([]);
-    setOutputImage('');
-    setIsLoading(true); // Set loading to true when starting the request
     try {
-      // Fetch the top K images and output image from the API
-      const fetchedTopKImages = await getTopKImages(providerId);
-      setTopKImages(fetchedTopKImages);
+      // Start both loading states
+      setLeftLoading(true);
+      setRightLoading(true);
 
-      const fetchedOutputImage = await getOutputImage(providerId);
-      setOutputImage(fetchedOutputImage);
+      // First API call (10 seconds)
+      const similarImagesResponse = await getTopKImages();
+      setTopKImages(similarImagesResponse.images);
+
+      // Second API call (50 seconds)
+      const finalImageResponse = await getOutputImage();
+      setOutputImage(finalImageResponse.image);
     } catch (error) {
-      console.error('Error fetching images:', error);
+      console.error('Error:', error);
+      setLeftLoading(false);
+      setRightLoading(false);
     }
   };
 
@@ -43,8 +42,9 @@ function App() {
       />
       <ImageDisplay 
         topKImages={topKImages} 
-        outputImage={outputImage} 
-        isLoading={isLoading}
+        outputImage={outputImage}
+        leftLoading={leftLoading}
+        rightLoading={rightLoading}
       />
     </div>
   );
