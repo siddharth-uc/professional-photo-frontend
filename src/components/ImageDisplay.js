@@ -7,7 +7,7 @@ function ImageDisplay({ topKImages, outputImage, leftLoading, rightLoading }) {
   const defaultOptions = {
     loop: true,
     autoplay: true,
-    path: "/loading_lottie_2.json",
+    path: "./loading_lottie_2.json",
   };
 
   return (
