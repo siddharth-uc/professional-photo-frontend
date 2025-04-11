@@ -3,7 +3,7 @@
 // Import axios
 import axios from 'axios';
 
-const BASE_URL = 'http://e88e-165-85-55-93.ngrok-free.app/provider-training-service/professional';
+const BASE_URL = 'http://09cb-165-85-55-93.ngrok-free.app/provider-training-service/professional';
 const TOP_K_ENDPOINT = `${BASE_URL}/generateProfessionalImageForProviderId`;
 const OUTPUT_ENDPOINT = `${BASE_URL}/generateProfessionalImageForProviderId`;
 
