@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/professional-photo-frontend/static/css/main.98a32d9a.css",
-    "main.js": "/professional-photo-frontend/static/js/main.fa19dab9.js",
+    "main.js": "/professional-photo-frontend/static/js/main.64ff7aae.js",
     "index.html": "/professional-photo-frontend/index.html",
     "main.98a32d9a.css.map": "/professional-photo-frontend/static/css/main.98a32d9a.css.map",
-    "main.fa19dab9.js.map": "/professional-photo-frontend/static/js/main.fa19dab9.js.map"
+    "main.64ff7aae.js.map": "/professional-photo-frontend/static/js/main.64ff7aae.js.map"
   },
   "entrypoints": [
     "static/css/main.98a32d9a.css",
-    "static/js/main.fa19dab9.js"
+    "static/js/main.64ff7aae.js"
   ]
 }
