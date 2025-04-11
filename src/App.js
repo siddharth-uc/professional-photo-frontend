@@ -8,8 +8,7 @@ import { getTopKImages, getOutputImage } from './api/imageApi';
 function App() {
   const [providerId, setProviderId] = useState('');
   const [topKImages, setTopKImages] = useState([]);
-  const [outputImage, setOutputImage] = useState('');
-  const [isLoading, setIsLoading] = useState(false); // Add this state
+  const [outputImage, setOutputImage] = useState('vfev');
   const [leftLoading, setLeftLoading] = useState(false);
   const [rightLoading, setRightLoading] = useState(false);
 
@@ -19,13 +18,13 @@ function App() {
       setLeftLoading(true);
       setRightLoading(true);
 
-      // First API call (10 seconds)
+      // // First API call (10 seconds)
       const similarImagesResponse = await getTopKImages(providerId);
-      setTopKImages(similarImagesResponse.images);
+      setTopKImages(similarImagesResponse);
 
-      // Second API call (50 seconds)
+      // // Second API call (50 seconds)
       const finalImageResponse = await getOutputImage(providerId);
-      setOutputImage(finalImageResponse.image);
+      setOutputImage(finalImageResponse);
     } catch (error) {
       console.error('Error:', error);
       setLeftLoading(false);
