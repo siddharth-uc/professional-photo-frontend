@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/dsa/professional-photo-frontend/static/css/main.98a32d9a.css",
+    "main.js": "/dsa/professional-photo-frontend/static/js/main.fa19dab9.js",
+    "index.html": "/dsa/professional-photo-frontend/index.html",
+    "main.98a32d9a.css.map": "/dsa/professional-photo-frontend/static/css/main.98a32d9a.css.map",
+    "main.fa19dab9.js.map": "/dsa/professional-photo-frontend/static/js/main.fa19dab9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.98a32d9a.css",
+    "static/js/main.fa19dab9.js"
+  ]
+}
