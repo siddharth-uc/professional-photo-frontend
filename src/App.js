@@ -20,11 +20,11 @@ function App() {
       setRightLoading(true);
 
       // First API call (10 seconds)
-      const similarImagesResponse = await getTopKImages();
+      const similarImagesResponse = await getTopKImages(providerId);
       setTopKImages(similarImagesResponse.images);
 
       // Second API call (50 seconds)
-      const finalImageResponse = await getOutputImage();
+      const finalImageResponse = await getOutputImage(providerId);
       setOutputImage(finalImageResponse.image);
     } catch (error) {
       console.error('Error:', error);
