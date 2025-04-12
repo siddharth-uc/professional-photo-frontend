@@ -25,12 +25,22 @@
   padding: 1rem;
 }
 
-.left-images-container, .right-image-container {
+.left-images-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* important: stack images vertically */
+  overflow-y: auto; /* vertical scroll */
+  max-height: 400px; /* or whatever fits your design */
+  gap: 10px; /* optional: spacing between images */
+  align-items: center; /* keep images centered horizontally */
+}
+
+.right-image-container {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-} 
+}
 
 .fixed-image-box {
   width: 150px;

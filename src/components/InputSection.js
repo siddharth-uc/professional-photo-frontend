@@ -26,15 +26,20 @@ function InputSection({ providerId, setProviderId, onGenerate, leftLoading, righ
         <label htmlFor="provider-id">Provider ID</label>
         <div className="input-border"></div>
       </div>
-      
+
       <button 
         type="submit" 
         className="generate-button"
         disabled={!providerId.trim() || leftLoading || rightLoading }
       >
         Generate
-        <span className="button-arrow">→</span>
+        <span className="button-arrow"></span>
       </button>
+      {/* <div className="example-ids">
+        Try these: <span className="example-id" onClick={() => setProviderId('660ed20c3a313a002445d58c')}>660ed20c3a313a002445d58c</span>, 
+        <span className="example-id" onClick={() => setProviderId('66a863ac0714440024be9e18')}>66a863ac0714440024be9e18</span>, 
+        <span className="example-id" onClick={() => setProviderId('demo789')}>demo789</span>
+      </div> */}
     </form>
   );
 }

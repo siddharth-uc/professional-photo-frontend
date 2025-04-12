@@ -124,3 +124,33 @@
     justify-content: center;
   }
 } 
+
+.top-part {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* space between input and button */
+}
+
+/* .example-ids {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #777;
+} */
+.example-ids {
+  margin-top: 10px;
+  margin-bottom: 16px; /* <-- add this */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 1000px; /* adjust this based on your page */
+}
+
+.example-id {
+  cursor: pointer;
+  color: #888; /* soft gray */
+}
+
+
+.example-id:hover {
+  text-decoration: underline;
+}

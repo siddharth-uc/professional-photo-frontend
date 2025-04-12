@@ -25,7 +25,7 @@ export async function getTopKImages(providerId) {
       providerId: providerId
     }, axiosConfig);
     console.log("response", response);
-    return response.data.data.bestImages || [];
+    return response || [];
   } catch (error) {
     console.error('Error fetching top K images:', error);
     throw error;
@@ -39,7 +39,7 @@ export async function getOutputImage(providerId) {
       providerId: providerId
     }, axiosConfig);
     console.log("response", response);
-    return response.data.data.professionalImage || '';
+    return response;
   } catch (error) {
     console.error('Error fetching output image:', error);
     throw error;

@@ -1,6 +1,7 @@
 /* src/App.css */
 .container {
   width: 800px;
+  height: 900px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
 }
@@ -24,24 +25,28 @@
   border: 2px dashed #ccc;
   padding: 20px;
   border-radius: 10px;
+  max-height: 950px;
 }
 
 .left-images-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 150px;
-  gap: 10px;
-  width: 40%;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
+  width: 100%;
+  max-width: 400px; /* control overall width */
+  display: flex;
+  flex-wrap: wrap; /* allow multiple items per row */
+  gap: 10px; /* spacing between images */
+  overflow-y: auto; /* vertical scroll */
+  max-height: 950px;
+  justify-content: center; /* optional: center images horizontally */
 }
 
+
 .left-images-container img {
-  width: 100%;
-  object-fit: cover;
-  border-radius: 4px;
+  width: 48%; /* two images per row (small gap) */
+  height: auto;
+  object-fit: contain;
 }
+
+
 
 .arrow {
   font-size: 2rem;
@@ -79,7 +84,7 @@ button:hover {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 950px) {
   .container {
     width: 95%;
   }

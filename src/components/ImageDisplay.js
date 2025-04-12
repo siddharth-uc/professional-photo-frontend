@@ -11,7 +11,7 @@ function ImageDisplay({ topKImages, outputImage, leftLoading, rightLoading }) {
       <div className="left-images-container">
          {leftLoading ? (
            <Lottie 
-             animationData={require('./hands_lottie.json')}
+             animationData={require('./basic_loading.json')}
              loop={true}
              style={{ width: 200, height: 200 }} // Adjust size as needed
              />
@@ -31,7 +31,7 @@ function ImageDisplay({ topKImages, outputImage, leftLoading, rightLoading }) {
       <div className="right-image-container">
         {rightLoading ? (
           <Lottie 
-            animationData={require('./hands_lottie.json')}
+            animationData={require('./basic_loading.json')}
             loop={true}
             style={{ width: 200, height: 200 }}
           />
