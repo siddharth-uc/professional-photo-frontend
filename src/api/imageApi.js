@@ -2,8 +2,9 @@
 
 // Import axios
 import axios from 'axios';
-
-const BASE_URL = process.env.NODE_ENV == 'production' ? process.env.BASE_URL : process.env.BASE_URL_DEV;
+console.log(process.env.NODE_ENV);
+const BASE_URL = process.env.REACT_APP_SERVER_BASE_URL;
+console.log(BASE_URL);
 const TOP_K_ENDPOINT = `${BASE_URL}/generateProfessionalImageForProviderId?client_id=service-market`;
 const OUTPUT_ENDPOINT = `${BASE_URL}/generateProfessionalImageForProviderId?client_id=service-market`;
 
