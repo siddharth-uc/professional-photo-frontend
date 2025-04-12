@@ -71,6 +71,13 @@ function App() {
         <span className="example-id" onClick={() => setProviderId('6696950a2a206200241372df')}>6696950a2a206200241372df</span>, 
         <span className="example-id" onClick={() => setProviderId('664efeb8660ef200248c1c37')}>664efeb8660ef200248c1c37</span> 
       </div>
+      <p style={{ fontSize: '10.67px' }}>
+        *For trying on other partners, copy <code>provider_id</code> from{' '}
+        <a href="https://ops.urbanclap.com/provider" target="_blank" rel="noopener noreferrer">
+          https://ops.urbanclap.com/provider
+        </a>{' '}
+        site after adding "Approved" status filter.
+      </p>
       {(leftLoading || rightLoading || topKImages.length > 0 || outputImage) && (
         <ImageDisplay 
           topKImages={topKImages} 
