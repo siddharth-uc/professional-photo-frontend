@@ -2,12 +2,11 @@
 
 // Import axios
 import axios from 'axios';
-
-const BASE_URL = 'https://09cb-165-85-55-93.ngrok-free.app/provider-training-service/professional';
-const TOP_K_ENDPOINT = `${BASE_URL}/generateProfessionalImageForProviderId?client_id=service-market`;
-const OUTPUT_ENDPOINT = `${BASE_URL}/generateProfessionalImageForProviderId?client_id=service-market`;
-
-// const OUTPUT_ENDPOINT = `${BASE_URL}/getGeneratedImage`;
+console.log(process.env.NODE_ENV);
+const BASE_URL = process.env.REACT_APP_SERVER_BASE_URL;
+console.log(BASE_URL);
+const TOP_K_ENDPOINT = `${BASE_URL}/generateProfessionalImageForProviderId`;
+const OUTPUT_ENDPOINT = `${BASE_URL}/getGeneratedImage`;
 
 // Configure axios defaults
 const axiosConfig = {
