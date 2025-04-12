@@ -11,30 +11,40 @@ function App() {
   const [outputImage, setOutputImage] = useState('');
   const [leftLoading, setLeftLoading] = useState(false);
   const [rightLoading, setRightLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleGenerate = async () => {
+    setError(''); 
+    setLeftLoading(true);
+    setRightLoading(true);
+  
     try {
-      // Start both loading states
-      setLeftLoading(true);
-      setRightLoading(true);
-
-      // // First API call (10 seconds)
+      // First API call (10 seconds)
       const similarImagesResponse = await getTopKImages(providerId);
-      setTopKImages(similarImagesResponse);
-
+      setTopKImages(similarImagesResponse.data.data.bestImages || []);
+      // setTopKImages(['sdffs','fsafs','dd']);
+      if(similarImagesResponse.data.success === false){
+        setError(similarImagesResponse.data.message);
+      }
       setLeftLoading(false);
-
-      // // Second API call (50 seconds)
+    } catch (error) {
+      console.error('Error fetching similar images:', error);
+      setError('Error fetching similar images');
+      setLeftLoading(false);
+    }
+  
+    try {
+      // Second API call (50 seconds)
       const finalImageResponse = await getOutputImage(providerId);
       setOutputImage(finalImageResponse);
       setRightLoading(false);
-
     } catch (error) {
-      console.error('Error:', error);
-      setLeftLoading(false);
+      console.error('Error fetching final image:', error);
+      setError('Error fetching final image');
       setRightLoading(false);
     }
   };
+  
 
   return (
     <div className="container">
@@ -42,6 +52,8 @@ function App() {
         providerId={providerId} 
         setProviderId={setProviderId} 
         onGenerate={handleGenerate}
+        leftLoading={leftLoading}
+        rightLoading={rightLoading}
       />
       {(leftLoading || rightLoading || topKImages.length > 0 || outputImage) && (
         <ImageDisplay 
@@ -50,6 +62,11 @@ function App() {
           leftLoading={leftLoading}
           rightLoading={rightLoading}
         />
+      )}
+      {error && (
+        <div className="error-message">
+          {error}
+        </div>
       )}
     </div>
   );

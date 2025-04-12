@@ -95,3 +95,12 @@ button:hover {
     width: 100%;
   }
 }
+
+.error-message {
+  color: #dc3545;
+  padding: 10px;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+}

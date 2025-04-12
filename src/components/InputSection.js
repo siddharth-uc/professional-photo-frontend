@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './InputSection.css'; // Create this CSS file
 
-function InputSection({ providerId, setProviderId, onGenerate }) {
+function InputSection({ providerId, setProviderId, onGenerate, leftLoading, rightLoading }) {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleSubmit = (e) => {
@@ -30,7 +30,7 @@ function InputSection({ providerId, setProviderId, onGenerate }) {
       <button 
         type="submit" 
         className="generate-button"
-        disabled={!providerId.trim()}
+        disabled={!providerId.trim() || leftLoading || rightLoading }
       >
         Generate
         <span className="button-arrow">→</span>
