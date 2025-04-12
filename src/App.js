@@ -8,7 +8,7 @@ import { getTopKImages, getOutputImage } from './api/imageApi';
 function App() {
   const [providerId, setProviderId] = useState('');
   const [topKImages, setTopKImages] = useState([]);
-  const [outputImage, setOutputImage] = useState('vfev');
+  const [outputImage, setOutputImage] = useState('');
   const [leftLoading, setLeftLoading] = useState(false);
   const [rightLoading, setRightLoading] = useState(false);
 
@@ -22,9 +22,13 @@ function App() {
       const similarImagesResponse = await getTopKImages(providerId);
       setTopKImages(similarImagesResponse);
 
+      setLeftLoading(false);
+
       // // Second API call (50 seconds)
       const finalImageResponse = await getOutputImage(providerId);
       setOutputImage(finalImageResponse);
+      setRightLoading(false);
+
     } catch (error) {
       console.error('Error:', error);
       setLeftLoading(false);
@@ -39,12 +43,14 @@ function App() {
         setProviderId={setProviderId} 
         onGenerate={handleGenerate}
       />
-      <ImageDisplay 
-        topKImages={topKImages} 
-        outputImage={outputImage}
-        leftLoading={leftLoading}
-        rightLoading={rightLoading}
-      />
+      {(leftLoading || rightLoading || topKImages.length > 0 || outputImage) && (
+        <ImageDisplay 
+          topKImages={topKImages} 
+          outputImage={outputImage}
+          leftLoading={leftLoading}
+          rightLoading={rightLoading}
+        />
+      )}
     </div>
   );
 }
